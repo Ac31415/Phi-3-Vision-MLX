@@ -1,7 +1,10 @@
-mlx==0.15.0
-transformers==4.40.2
+# mlx==0.15.0
+mlx
+# transformers==4.40.2
+transformers
 numpy==1.26.4
-matplotlib==3.9.0
+# matplotlib==3.9.0
+matplotlib
 datasets==2.19.1
 gradio==4.31.5
 requests==2.32.3

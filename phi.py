@@ -411,7 +411,8 @@ class Phi3ImageEmbedding(nn.Module):
             output_len.append(int((h*w + 1) * 144 + 1 + (h + 1) * 12))
         idx = 0
         for i, cnt in enumerate(output_len):
-            txt_embeds[positions[idx][0], positions[idx][1] : positions[idx][1] + cnt] = output_imgs[i]
+            # txt_embeds[positions[idx][0], positions[idx][1] : positions[idx][1] + cnt] = output_imgs[i]
+            txt_embeds[positions[idx][0], positions[idx][1] : positions[idx][1] + cnt] = output_imgs[i].squeeze(0)
             idx += cnt
         return txt_embeds
 

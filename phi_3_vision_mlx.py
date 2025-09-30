@@ -249,6 +249,9 @@ def _setup():
         ("microsoft/Phi-3.5-mini-instruct", PATH_ORIGINAL_PHI3_BLIND, PATH_QUANTIZED_PHI3_BLIND),
         ("microsoft/Phi-3.5-vision-instruct", PATH_ORIGINAL_PHI3_VISION, PATH_QUANTIZED_PHI3_VISION)
     ]
+    
+    print("paths:", paths)
+    
     for hub, local, quant in paths:
         raw = snapshot_download(repo_id=hub, allow_patterns=["*.safetensors", "*.json"])
         _sanitize(from_path=raw, to_path=local)
@@ -1319,6 +1322,9 @@ def load(blind_model=False, quantize_model=False, quantize_cache=False, use_adap
         adapter_path = None
     if not os.path.exists(model_path):
         _setup()
+        
+    print("Loading model from:", model_path)
+        
     return _load(model_path=model_path, use_quantized_cache=quantize_cache, adapter_path=adapter_path)
 
 def generate(prompt, images=None, preload=None, blind_model=False, quantize_model=False, quantize_cache=False, use_adapter=False, max_tokens=512, verbose=True, return_tps=False, early_stop=False, stream=True, apply_chat_template=True, enable_api=False):
